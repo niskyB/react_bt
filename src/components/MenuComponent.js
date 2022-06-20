@@ -3,14 +3,19 @@ import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 
 function Menu(props) {
 
-    const menu = props.dishes.map((item) => (<div key={item.id} className='col-12 col-md-5 my-1'>
-        <Card key={item.id} onClick={() => props.onClick(item.id)}>
-            <CardImg width='100%' src={item.image} alt={item.name} />
+    const RenderMenuItem = ({ dish, onClick }) => {
+        return (<Card key={dish.id} onClick={() => onClick(dish.id)}>
+            <CardImg width='100%' src={dish.image} alt={dish.name} />
             <CardImgOverlay>
-                <CardTitle tag='h6'>{item.name}</CardTitle>
+                <CardTitle tag='h6'>{dish.name}</CardTitle>
             </CardImgOverlay>
-        </Card>
+        </Card>)
+    }
+
+    const menu = props.dishes.map((item) => (<div key={item.id} className='col-12 col-md-5 my-1'>
+        <RenderMenuItem dish={item} onClick={props.onClick} />
     </div>))
+
     return (<div className='container'>
         <div className='row'>
             {menu}
