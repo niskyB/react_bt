@@ -40,7 +40,7 @@ function DishDetail(props) {
 
     return (
         <>
-            {renderDetail(props.dish, props.comments)}
+            {renderDetail(props.dish, props.dish.comments)}
         </>
     );
 }
