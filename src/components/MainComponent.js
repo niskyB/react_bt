@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { COMMENTS } from '../share/comments';
-import { DISHES } from '../share/dishes';
-import { LEADERS } from '../share/leaders';
-import { PROMOTIONS } from '../share/promotions';
 import Contact from './ContactComponent';
 import Footer from './FooterComponent';
 import Header from './HeaderComponent';
@@ -11,13 +7,13 @@ import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import About from './AboutComponent';
+import { useSelector } from 'react-redux';
 
-function Main(props) {
-    const [dishes, setDishes] = useState(DISHES);
-    const [selectedDish, setSelectedDish] = useState(null);
-    const [comments, setComments] = useState(COMMENTS);
-    const [promotions, setPromotions] = useState(PROMOTIONS);
-    const [leaders, setLeaders] = useState(LEADERS);
+function Main() {
+    const dishes = useSelector(state => state.dishes);
+    const comments = useSelector(state => state.comments);
+    const promotions = useSelector(state => state.promotions);
+    const leaders = useSelector(state => state.leaders);
 
     const DishWithId = ({ match }) => {
         return (
@@ -38,8 +34,6 @@ function Main(props) {
 
     return (<div>
         <Header />
-        {/* <Menu dishes={dishes} onClick={(dishId) => setSelectedDish(dishId)} />
-        {selectedDish !== null && <DishDetail dish={dishes.filter((dish) => dish.id === selectedDish)[0]} />} */}
         <Switch>
             <Route path='/home' component={() => <Home
                 dish={dishes.filter((dish) => dish.featured)[0]}

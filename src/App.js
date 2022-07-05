@@ -1,21 +1,22 @@
 import './App.css';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponent';
-import { useState } from 'react';
-import { DISHES } from './share/dishes';
 import Main from './components/MainComponent';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configStore';
+
+const store = ConfigureStore();
 
 
 function App() {
-  const [dishes, setDishes] = useState(DISHES);
 
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Main />
-      </div>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="App">
+          <Main />
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
