@@ -77,12 +77,7 @@ function Header() {
           </Collapse>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <Button
-                outline
-                onClick={() => {
-                  setIsModalOpen(() => setIsModalOpen(!isModalOpen));
-                }}
-              >
+              <Button outline onClick={() => setIsModalOpen(!isModalOpen)}>
                 <span className="fa fa-sign-in fa-lg"></span>Login
               </Button>
             </NavItem>
