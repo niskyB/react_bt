@@ -1,22 +1,16 @@
 import './App.css';
-import Main from './components/MainComponent';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/configStore';
-
-const store = ConfigureStore();
+import Home from './components/HomeComponent';
 
 
 function App() {
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="App">
-          <Main />
-        </div>
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <div className="App">
+        <Home />
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,58 +1,24 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import Contact from './ContactComponent';
-import Footer from './FooterComponent';
-import Header from './HeaderComponent';
-import Home from './HomeComponent';
-import Menu from './MenuComponent';
-import DishDetail from './DishDetailComponent';
-import About from './AboutComponent';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { BATH_SHOWER } from '../share/bath_shower';
+import { BEDDING } from '../share/bedding';
+import { LIGHTING } from '../share/lighting';
+import DetailComponent from './detailcomponent';
+
 
 function Main() {
-    const dishes = useSelector(state => state.dishes);
-    const comments = useSelector(state => state.comments);
-    const promotions = useSelector(state => state.promotions);
-    const leaders = useSelector(state => state.leaders);
-
-    const DishWithId = ({ match }) => {
-        return (
-            <DishDetail
-                dish={
-                    dishes.filter(
-                        (dish) => dish.id === parseInt(match.params.dishId, 10)
-                    )[0]
-                }
-                comments={comments.filter(
-                    (comment) =>
-                        comment.dishId === parseInt(match.params.dishId, 10)
-                )}
-            />
-        );
-    };
-
+    const [bathShower, setBathShower] = useState(BATH_SHOWER);
+    const [bedding, setBedding] = useState(BEDDING);
+    const [lighting, setLighting] = useState(LIGHTING);
 
     return (<div>
-        <Header />
-        <Switch>
-            <Route path='/home' component={() => <Home
-                dish={dishes.filter((dish) => dish.featured)[0]}
-                promotion={
-                    promotions.filter(
-                        (promotion) => promotion.featured
-                    )[0]
-                }
-                leader={
-                    leaders.filter((leader) => leader.featured)[0]
-                }
-            />} />
-            <Route path='/contactus' component={Contact} />
-            <Route exact path='/menu' component={() => <Menu dishes={dishes} />} />
-            <Route path='/menu/:dishId' component={DishWithId} />
-            <Route path='/about' component={() => <About leaders={leaders} />} />
-            <Redirect to='/home' />
-        </Switch>
-        <Footer />
+        <div className='container'>
+            <div className='row'>
+                <DetailComponent component={bathShower[0]} />
+                <DetailComponent component={bedding[0]} />
+                <DetailComponent component={lighting[0]} />
+            </div>
+        </div>
+
     </div>);
 }
 
