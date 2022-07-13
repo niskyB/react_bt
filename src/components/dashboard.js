@@ -18,17 +18,17 @@ function DashBoard() {
                         </p>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/lighting">
                             Lighting
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/bedding">
                             Bedding
                         </NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink className="nav-link" to="/">
+                        <NavLink className="nav-link" to="/badshower">
                             Bath & Shower
                         </NavLink>
                     </NavItem>
