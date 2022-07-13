@@ -1,7 +1,7 @@
 import React from 'react';
 import DashBoard from './dashboard';
 import Header from './headercomponent';
-import Main from './MainComponent';
+import Main from './maincomponent';
 
 
 
